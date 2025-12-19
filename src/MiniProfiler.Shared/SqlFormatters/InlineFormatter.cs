@@ -74,10 +74,13 @@ namespace StackExchange.Profiling.SqlFormatters
 
             if (result != null)
             {
-                switch (type.ToLower())
+                switch (type.ToLowerInvariant())
                 {
                     case "string":
+                    case "stringfixedlength":
                     case "datetime":
+                    case "guid":
+                    case "uniqueidentifier":
                         result = string.Format("'{0}'", result);
                         break;
                     case "boolean":
